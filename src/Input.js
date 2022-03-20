@@ -3,7 +3,7 @@ import React from "react";
 const Input = () => {
   return (
     <>
-      <div class="result" id="result">
+      <div className="result" id="result">
         0.00
       </div>
     </>

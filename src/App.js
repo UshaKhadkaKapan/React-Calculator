@@ -6,12 +6,12 @@ import Button from "./Button";
 function App() {
   return (
     <>
-      <div class="wrapper">
+      <div className="wrapper">
         {/* <h1 class="Calculator">Calculator 😉🤣</h1>   */}
 
         <Title />
 
-        <div class="mainParent">
+        <div className="mainParent">
           {/* <div class="result" id="result">
           0.00
         </div>  */}
