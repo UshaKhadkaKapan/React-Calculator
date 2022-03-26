@@ -2,48 +2,117 @@ import "./App.css";
 import Title from "./Title";
 import Input from "./Input";
 import Button from "./Button";
+import { useState } from "react";
 
-function App() {
+const operators = ["+", "-", "/", "*"];
+
+const App = () => {
+  const [textToDisplay, setTextToDisplay] = useState("");
+  const [lastOperator, setLastOperator] = useState();
+  const handleOnClick = (val) => {
+    // if (operators.includes(val)) {
+    //   setLastOperator(val);
+
+    // }
+
+    if (operators.includes(val) || val === "=") {
+      const lastOperatorIndex = lastOperator
+        ? textToDisplay.lastIndexOf(lastOperator) + 1
+        : 0;
+
+      const firstNumberSet = textToDisplay.substring(0, lastOperatorIndex);
+      const lastNumberSet = textToDisplay.slice(lastOperatorIndex);
+
+      const str = firstNumberSet + parseFloat(lastNumberSet);
+
+      if (val === "=") {
+        return onTotal(str);
+      }
+
+      setTextToDisplay(str + val);
+      setLastOperator(val);
+      return;
+    }
+
+    if (val === ".") {
+      const lastOperatorIndex = lastOperator
+        ? textToDisplay.lastIndexOf(lastOperator) + 1
+        : 0;
+
+      const lastNumberSet = textToDisplay.slice(lastOperatorIndex);
+
+      if (lastNumberSet.includes(".")) {
+        return;
+      }
+    }
+
+    // step 1 .index of last operator or 0
+
+    // if (val === ".") {
+    //   if (lastOperator) {
+    //     const lastOperatorIndex = textToDisplay.lastIndexOf(lastOperator);
+    //     const lastNumberSet = textToDisplay.slice(lastOperatorIndex + 1);
+
+    //     if (lastNumberSet.includes(".")) {
+    //       return;
+    //     }
+    //   } else {
+    //     if (textToDisplay.includes(".")) {
+    //       return;
+    //     }
+    //   }
+    // }
+
+    if (val === "=") {
+      return onTotal();
+    }
+
+    if (val === "AC") {
+      return setTextToDisplay("");
+    }
+
+    if (val === "C") {
+      const str = textToDisplay.slice(0, -1);
+      return setTextToDisplay(str);
+    }
+
+    if (operators.includes(val)) {
+      const lastChar = textToDisplay.slice(-1);
+
+      if (operators.includes(lastChar)) {
+        const str = textToDisplay.slice(0, -1) + val;
+        return setTextToDisplay(str);
+      }
+    }
+
+    setTextToDisplay(textToDisplay + val);
+  };
+
+  const onTotal = (str) => {
+    // let str = textToDisplay;
+
+    const lastChar = str.slice(-1);
+
+    if (operators.includes(lastChar)) {
+      str = str.slice(0, -1);
+    }
+
+    const ttl = eval(str);
+    setTextToDisplay(ttl.toString());
+  };
+
   return (
     <>
       <div className="wrapper">
-        {/* <h1 class="Calculator">Calculator 😉🤣</h1>   */}
-
         <Title />
 
         <div className="mainParent">
-          {/* <div class="result" id="result">
-          0.00
-        </div>  */}
-
-          <Input />
-
-          {/* <div class="items"> */}
-          <Button />
-          {/* <button class="clear">AC</button>
-            <button class="clean">C</button>
-            <button class="divide">/</button>
-            <button class="multi">*</button>
-            <button class="plus">+</button>
-            <button class="minus">-</button>
-
-            <button class="no-9">9</button>
-            <button class="no-8">8</button>
-            <button class="no-7">7</button>
-            <button class="no-6">6</button>
-            <button class="no-5">5</button>
-            <button class="no-4">4</button>
-            <button class="no-3">3</button>
-            <button class="no-2">2</button>
-            <button class="no-1">1</button>
-            <button class="no-0">0</button>
-            <button class="no-dot">.</button>
-            <button class="ans">=</button> */}
+          <Input textToDisplay={textToDisplay} />
+          <Button handleOnClick={handleOnClick} />
         </div>
       </div>
-      {/* </div> */}
     </>
   );
-}
+};
 
 export default App;

@@ -1,10 +1,10 @@
 import React from "react";
 
-const Input = () => {
+const Input = ({ textToDisplay }) => {
   return (
     <>
       <div className="result" id="result">
-        0.00
+        {textToDisplay || "0.00"}
       </div>
     </>
   );
