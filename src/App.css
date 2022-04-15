@@ -21,7 +21,7 @@ body {
 
 .mainParent {
   width: 350px;
-  background: rgb(152, 172, 236);
+  background: black;
   padding: 1rem;
   border-radius: 10px;
   box-shadow: -4px 4px 5px rgb(41, 35, 37);
@@ -36,8 +36,9 @@ body {
   box-shadow: -4px 4px 5px rgb(68, 66, 67);
   display: flex;
   justify-content: flex-end;
-  color: rgba(127, 255, 212, 0.479);
+  color: black;
   backdrop-filter: blur(10px);
+  background: white;
 }
 
 .items {
@@ -59,13 +60,13 @@ body {
   box-shadow: -4px 4px 5px rgb(68, 66, 67);
   font-size: 1.3rem;
   color: var (--main-color);
-  background: rgba(45, 230, 190, 0.39);
-  border-radius: 30%;
+  background: white;
+  border-radius: 50%;
   border: none;
 }
 
 .items > button:hover {
-  background: rgba(72, 198, 214, 0.473);
+  background: gold;
 }
 
 .clear {
