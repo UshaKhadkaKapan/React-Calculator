@@ -11,3 +11,9 @@ const Input = ({ textToDisplay }) => {
 };
 
 export default Input;
+
+// git init
+// delte the old git file/folder
+// and then do   git init
+// no need to push anything to repo
+// just do the deployment

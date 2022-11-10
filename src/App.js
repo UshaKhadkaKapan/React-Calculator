@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import Title from "./Title";
 import Input from "./Input";
@@ -45,23 +46,6 @@ const App = () => {
         return;
       }
     }
-
-    // step 1 .index of last operator or 0
-
-    // if (val === ".") {
-    //   if (lastOperator) {
-    //     const lastOperatorIndex = textToDisplay.lastIndexOf(lastOperator);
-    //     const lastNumberSet = textToDisplay.slice(lastOperatorIndex + 1);
-
-    //     if (lastNumberSet.includes(".")) {
-    //       return;
-    //     }
-    //   } else {
-    //     if (textToDisplay.includes(".")) {
-    //       return;
-    //     }
-    //   }
-    // }
 
     if (val === "=") {
       return onTotal();
